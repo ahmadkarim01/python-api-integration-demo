@@ -31,9 +31,9 @@ def fetch_with_retry(url, params=None, mx_retries=3, delay=2):
             print(f"Request timed out on attempt {attempt}. Retrying...")
             time.sleep(delay)
 
-        # except requests.exceptions.ConnectionError:
-        #     print("No internet connection. Please check your connection and try again.")
-        #     return None
+        except requests.exceptions.ConnectionError:
+            print("No internet connection. Please check your connection and try again.")
+            return None
 
     print("All retries exhausted. Failed to fetch data.")
     return None
